@@ -15,10 +15,10 @@ const DetailPage = () => {
     <div>
       {details && (
         <>
-          <h1 className="text-center">
+          {/* <h1 className="text-center">
             Patient Inbasket Messaging - Refill Protocol Analysis and
             Recommendations
-          </h1>
+          </h1> */}
           <div className={`${styles.detailsContainer}`}>
             <div className="flex justify-between">
               <div className="flex align-center" style={{ gap: "6px" }}>
@@ -42,47 +42,50 @@ const DetailPage = () => {
             </div>
             <div className="mt-xl">
               <h3>Original Request Text:</h3>
-              <div className={`${styles.originalText}`}>{details.TaskDescription}</div>
+              <div className={`${styles.originalText}`}>
+                {details.TaskDescription}
+              </div>
             </div>
             <div className="flex align-center mt-xl" style={{ gap: "6px" }}>
               <h3>Is This A Request for Med Refill?:</h3>
-              <p>{details.IsMedicineRefill ? 'Yes' : 'No'}</p>
+              <p>{details.IsMedicineRefill ? "Yes" : "No"}</p>
             </div>
             <div className="flex align-center mt-md" style={{ gap: "6px" }}>
               <h3>Requested Medication Name:</h3>
-              <p>{details.IsMedicineRefill ? details.MedicineEntities[0].MedicineName : 'NA'}</p>
+              <p>
+                {details.IsMedicineRefill
+                  ? details.MedicineEntities[0].MedicineName
+                  : "NA"}
+              </p>
             </div>
             <div className="flex align-center mt-md" style={{ gap: "6px" }}>
               <h3>Requested Medication Class:</h3>
-              <p>{details.IsMedicineRefill ? details.MedicineEntities[0].IntentCategory : 'NA'}</p>
+              <p>
+                {details.IsMedicineRefill
+                  ? details.MedicineEntities[0].IntentCategory
+                  : "NA"}
+              </p>
             </div>
             <br />
             <div className="flex align-center mt-md" style={{ gap: "6px" }}>
-              <h3>Most Recent Visit:</h3>
+              <h3>Most Recent Visit</h3> <span>(Within 12 months):</span>
               <p>NA</p>
             </div>
             <div className="flex align-center mt-md" style={{ gap: "6px" }}>
-              <h3>Within 12 months</h3>
-              <p>NA</p>
-            </div>
-            <div className="flex align-center mt-md" style={{ gap: "6px" }}>
-              <h3>Most Recent Lab Procedure:</h3>
-              <p>NA</p>
-            </div>
-            <div className="flex align-center mt-md" style={{ gap: "6px" }}>
-              <h3>Within X months</h3>
+              <h3>Most Recent Lab Procedure</h3> <span>(Within 12 months):</span>
               <p>NA</p>
             </div>
             {/*  */}
             <div className="mt-xl">
-              <h3>Original Request Text:</h3>
+              <h3>Steps:</h3>
               <div className={`flex justify-around ${styles.stepsContainer}`}>
-                {details.Steps.map(step => <div className={`${styles.step}`}>
-                    {step.CurrentStep}
-                </div>)}
+                {details.Steps.map((step) => (
+                  <div key={step.CurrentStep} className={`${styles.step}`}>
+                   <span style={{color: 'green'}}>✓</span> {step.CurrentStep}
+                  </div>
+                ))}
+              </div>
             </div>
-            </div>
-            
           </div>
         </>
       )}

@@ -27,10 +27,10 @@ const Home = () => {
         }) => (
           <div className={`flex justify-between ${styles.listItem}`} key={id}>
             <div className={styles.itemLeft}>
-              <h3 className={`pointer`} onClick={() => redirectToDetail(id)}>
+              <h3 className={`pointer ${styles.messageHeading}`} onClick={() => redirectToDetail(id)}>
                 {TaskDescription}
               </h3>
-              <div className={`flex ${styles.greenBoxList}`}>
+              <div className={`flex mt-sm ${styles.greenBoxList}`}>
                 {Steps.map((step) => (
                   <div key={step.CurrentStep} className={styles.greenBox}>{step.CurrentStep}</div>
                 ))}
