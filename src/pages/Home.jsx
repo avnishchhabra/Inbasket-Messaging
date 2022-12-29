@@ -1,13 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import data from "../mock-data";
 import styles from "../css/pages/home.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import useData from "../hooks/useData";
 
 const Home = () => {
     const navigate = useNavigate();
   const redirectToDetail = (id) => {
     navigate(`${id}`)
   };
+  const newdata = useData()
   return (
     <div>
       {data.map(
